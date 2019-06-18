@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
 
-void main() {
+void main(){
   runApp(new MaterialApp(
-    home: new MyTextInput()
+    home: MyTextInput(),
   ));
 }
 
-class MyTextInput extends StatefulWidget {
+class MyTextInput extends StatefulWidget{
   @override
   MyTextInputState createState() => new MyTextInputState();
 }
-  
-  class MyTextInputState extends State<MyTextInput>{
 
-    final TextEditingController controller = new TextEditingController();
+class MyTextInputState extends State<MyTextInput>{
+  final TextEditingController controller = new TextEditingController();
 
-    String result = "";
+  String result = "";
 
-    @override
-    Widget build(BuildContext context){
-      return new Scaffold(
-        appBar: new AppBar(title: new Text("Input Text"), backgroundColor: Colors.deepOrange),
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Masukan Text"),
+          backgroundColor: Colors.deepOrange,
+        ),
         body: new Container(
           child: new Center(
             child: new Column(
@@ -28,23 +31,21 @@ class MyTextInput extends StatefulWidget {
               children: <Widget>[
                 new TextField(
                   decoration: new InputDecoration(
-                    hintText: "Type in here"
+                    hintText: "Ketik disini"
                   ),
-                  //onChanged is called whenever we add or delete something on Text Field
                   onSubmitted: (String str){
-                    setState((){
-                      result = result + '\n' + str;
+                    setState(() {
+                      result = result + "\n" + str;
                     });
-                    controller.text = "";
+                    controller.text="";
                   },
-                  controller: controller
+                  controller: controller,
                 ),
-                //displaying input text
                 new Text(result)
-                ]
-              )
-          )
-        )
-      );
-    }
+              ],
+            ),
+          ),
+        ),
+    );
+  }
 }
